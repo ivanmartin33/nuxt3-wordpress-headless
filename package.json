@@ -1,12 +1,22 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
-  },
-  "devDependencies": {
-    "nuxt": "3.0.0-rc.3"
-  }
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview"
+	},
+	"devDependencies": {
+		"@tailwindcss/aspect-ratio": "^0.4.0",
+		"@tailwindcss/forms": "^0.5.2",
+		"@tailwindcss/line-clamp": "^0.4.0",
+		"@tailwindcss/typography": "^0.5.2",
+		"jwt-decode": "^3.1.2",
+		"nuxt": "3.0.0-rc.3",
+		"nuxt-graphql-client": "^0.0.32",
+		"tailwindcss": "^3.0.24"
+	},
+	"dependencies": {
+		"uuid": "^8.3.2"
+	}
 }
