@@ -3,7 +3,6 @@ const authState = ref<"Login" | "Signup">("Login");
 const input = reactive({ password: "", user: "" });
 const authError = ref("");
 const router = useRouter();
-
 const { signUp, signIn } = useAuth();
 
 const toggleAuthState = () => {
@@ -26,7 +25,7 @@ const handleSubmit = async () => {
 			input.password = "";
 			authError.value = "";
 		} catch (e) {
-			authError.value = e.message;
+			authError.value = e.data.message;
 		}
 	}
 };

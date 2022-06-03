@@ -17,8 +17,9 @@ https://nuxt-graphql-client.web.app/
 
 ### Auth
 
-You can use the composable useAuth() for authenticate with JWT and WP-graphql backend
+You can use the composable useAuth() for authenticate with JWT and WP-graphql backend.
 
+The backend sent a X-Refresh cookie with the refresh token from wp-graphql-jwt-authentication
 # Setup Nuxt3
 
 Make sure to install the dependencies:

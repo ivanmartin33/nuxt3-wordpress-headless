@@ -1,11 +1,11 @@
-// import { User, AuthData } from "@/types/auth";
+import { User, AuthData } from "@/types/auth";
 import jwt_decode from "jwt-decode";
+import { FetchError } from "ohmyfetch";
 
 const useAuth = () => {
 	const authUser = useUser();
 	const router = useRouter();
 	const config = useRuntimeConfig();
-	const { handleGqlError } = useGqlError();
 
 	// Short duration JWT token (5 min)
 	const getJwtToken = () => {
@@ -62,31 +62,34 @@ const useAuth = () => {
 		const { data, error } = await useLazyAsyncData(
 			"user",
 			async () =>
-				await $fetch("/api/login", {
+				await $fetch<User>("/api/login", {
 					method: "POST",
 					body: {
 						user,
 						password,
 					},
+				}).catch((err) => {
+					throw err;
 				}),
 			{
 				initialCache: false,
 			}
-		).catch((e) => {
-			throw e;
-		});
+		);
 
 		/**
 		 * catch error if present
 		 */
 		if (!error.value) {
-			setJwtToken(data.value.login.user.jwtAuthToken);
-			authUser.value = data.value.login.user;
+			setJwtToken(data.value.jwtAuthToken);
+			authUser.value = data.value;
 		} else {
-			handleGqlError(error);
+			throw error.value;
 		}
 	};
 
+	/**
+	 *  Sign out method: clear session storage
+	 */
 	const signOut = () => {
 		unsetJwtToken();
 		authUser.value = null;
@@ -101,8 +104,9 @@ const useAuth = () => {
 	const refreshTokenExpired = async () => {
 		if (getJwtToken()) {
 			const token: any = jwt_decode(getJwtToken());
+
 			if (Date.now() >= token.exp * 1000) {
-				const { data }: any = await useAsyncData(
+				const { data } = await useAsyncData(
 					"refresh",
 					async () =>
 						await $fetch("/api/refresh", {
@@ -114,7 +118,7 @@ const useAuth = () => {
 				).catch((error) => {
 					throw error.data;
 				});
-				setJwtToken(data.value.data.refreshJwtAuthToken.authToken);
+				setJwtToken(data.value.refreshJwtAuthToken.authToken);
 			}
 		}
 	};
@@ -130,6 +134,7 @@ const useAuth = () => {
 		// // If you like, you may redirect the user now
 		// Router.push("/");
 	};
+
 	return {
 		signUp,
 		signIn,

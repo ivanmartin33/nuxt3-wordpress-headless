@@ -31,3 +31,8 @@ export const DEFAULT_STATE: AuthData = {
 	user: undefined,
 	error: undefined,
 };
+export interface Refresh {
+	refreshJwtAuthToken?: {
+		authToken?: string;
+	};
+}
