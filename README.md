@@ -1,25 +1,31 @@
-# Wordpress Auth Nuxt
+# Wordpress Auth Nuxt3, Wp-graphql ans Tailwind
 
-This is a boilerplate for Nuxt3 and Wordpress.
+This is a boilerplate for Nuxt3 with Wordpress backend and WP-graphql.
 
-# Nuxt 3 Minimal Starter
+## Usage
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+You need to install WP-graphql and WP-graphql-jwt-authentication plugins in your wordpress backend
 
-## Setup
+ivanmartin33/wp-graphql-jwt-authentication:feature/add-set-cookies-option
+
+
+### Nuxt3 and GraphQL
+
+In Nuxt3, you can use the following module for GraphQL : 
+https://nuxt-graphql-client.web.app/
+
+
+### Auth
+
+You can use the composable useAuth() for authenticate with JWT and WP-graphql backend
+
+# Setup Nuxt3
 
 Make sure to install the dependencies:
 
 ```bash
 # yarn
 yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
 
 ## Development Server
 
@@ -28,19 +34,3 @@ Start the development server on http://localhost:3000
 ```bash
 npm run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
