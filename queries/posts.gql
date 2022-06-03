@@ -1,0 +1,16 @@
+query getPosts {
+	posts {
+		nodes {
+			content
+			date
+			slug
+			status
+			title
+			author {
+				node {
+					name
+				}
+			}
+		}
+	}
+}
