@@ -1,6 +1,5 @@
 import { User, AuthData } from "@/types/auth";
 import jwt_decode from "jwt-decode";
-import { FetchError } from "ohmyfetch";
 
 const useAuth = () => {
 	const authUser = useUser();
@@ -59,7 +58,7 @@ const useAuth = () => {
 	 * @param password The password
 	 */
 	const signIn = async ({ user, password }) => {
-		const { data, error } = await useLazyAsyncData(
+		const { data, error } = await useAsyncData(
 			"user",
 			async () =>
 				await $fetch<User>("/api/login", {

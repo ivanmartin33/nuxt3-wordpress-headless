@@ -1,9 +1,10 @@
 import { defineNuxtConfig } from "nuxt";
 
 export default defineNuxtConfig({
-	css: ["@/assets/css/tailwind.css"],
-	modules: ["nuxt-graphql-client"],
-
+	css: ["@/assets/css/style.css"],
+	// plugins: ["@/plugins/vue-dom-purify"],
+	modules: ["nuxt-graphql-client", "@nuxtjs/tailwindcss"],
+	buildModules: [],
 	runtimeConfig: {
 		public: {
 			GQL_HOST: process.env.GQL_HOST,
@@ -14,14 +15,9 @@ export default defineNuxtConfig({
 		onlyOperationTypes: true,
 		silent: true,
 	},
-	build: {
-		postcss: {
-			postcssOptions: {
-				plugins: {
-					tailwindcss: {},
-					autoprefixer: {},
-				},
-			},
-		},
+	tailwindcss: {
+		jit: true,
+		exposeConfig: true,
+		viewer: false,
 	},
 });

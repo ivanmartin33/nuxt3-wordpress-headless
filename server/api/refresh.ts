@@ -1,4 +1,4 @@
-import { useCookie, setCookie } from "h3";
+import { useCookie } from "h3";
 import { Refresh } from "~~/types/auth";
 
 export default defineEventHandler(async (e) => {

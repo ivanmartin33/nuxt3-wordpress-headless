@@ -39,6 +39,9 @@ export default defineEventHandler(async (e) => {
 			},
 		})
 		.then((response: any) => {
+			/**
+			 * Check errors from wp-graphql
+			 */
 			if (response._data.errors) {
 				const errorMessage = handleGqlErrors(response._data.errors[0].message);
 
@@ -73,9 +76,9 @@ export default defineEventHandler(async (e) => {
 				});
 
 				/**
-				 * return the data
+				 * return the user data
 				 */
-				return response._data.data.login.user;
+				return response._data.data.login.user as User;
 			}
 		})
 		.catch((e) => {

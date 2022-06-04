@@ -41,19 +41,19 @@ const handleSubmit = async () => {
 				<input
 					placeholder="Email"
 					type="email"
-					class="bg-transparent p-2 rounded-sm focus:border-violet-700 focus:ring-0 w-full"
+					class="bg-transparent p-2 rounded-sm border border-gray-600 focus:border-violet-700 focus:outline-none w-full"
 					v-model="input.user"
 				/>
 				<input
 					placeholder="Password"
 					type="password"
-					class="bg-transparent p-2 rounded-sm focus:border-violet-700 focus:ring-0 w-full"
+					class="bg-transparent p-2 rounded-sm border border-gray-600 focus:border-violet-700 focus:outline-none w-full"
 					v-model="input.password"
 					@keypress.enter="handleSubmit"
 				/>
 
 				<button
-					class="flex justify-center hover:bg-violet-700 hover:text-white duration-200 px-5 py-1 rounded-sm bg-gray-700 button"
+					class="flex justify-center hover:bg-violet-700 hover:text-white duration-200 px-5 py-1 rounded-sm bg-gray-700"
 					@click="handleSubmit"
 				>
 					{{ authState === "Login" ? "Login" : "Signup" }}
@@ -73,8 +73,4 @@ const handleSubmit = async () => {
 		</div>
 	</div>
 </template>
-<style scoped>
-.button:hover {
-	border-color: rgba(0, 0, 0, 0) !important;
-}
-</style>
+<style scoped></style>

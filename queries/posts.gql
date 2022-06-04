@@ -1,6 +1,7 @@
 query getPosts {
 	posts {
 		nodes {
+			id
 			content
 			date
 			slug
@@ -11,6 +12,16 @@ query getPosts {
 					name
 				}
 			}
+		}
+	}
+}
+
+mutation editPost($id: ID!, $content: String, $title: String) {
+	updatePost(input: { id: $id, content: $content, title: $title }) {
+		post {
+			content
+			title
+			id
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Nav />
-		<div class="bg-slate-800 mb-auto h-full text-white">
+		<div class="bg-slate-800 mb-auto text-white">
 			<slot />
 		</div>
 	</div>
